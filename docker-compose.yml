@@ -1,0 +1,12 @@
+version: "3"
+services:
+  python-cgi:
+    restart: unless-stopped
+    container_name: python-cgi
+    build: .
+    ports:
+      - "8181:80"
+    volumes:
+      - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./cgi-bin:/usr/local/apache2/cgi-bin
+      - ./index.html:/usr/local/apache2/htdocs/index.html
